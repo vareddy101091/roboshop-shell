@@ -5,7 +5,7 @@ echo -e "\e[32m>>>>>>>>> Install nginx <<<<<<<<\e[0m"
 yum install nginx -y
 
 echo -e "\e[32m>>>>>>>>> Create Nginx Reverse Proxy Configuration. <<<<<<<<\e[0m"
-cp /home/centos/roboshop-shell/roboshop.conf /etc/nginx/default.d/roboshop.conf
+cp roboshop.conf /etc/nginx/default.d/roboshop.conf
 
 echo -e "\e[32m>>>>>>>>> Remove Default Content Nginx is serving <<<<<<<<\e[0m"
 rm -rf /usr/share/nginx/html/*
