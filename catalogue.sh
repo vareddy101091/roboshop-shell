@@ -19,6 +19,7 @@ cd /app
 echo -e "\e[36m>>>>>>>>> Unzip App Content <<<<<<<<\e[0m"
 unzip /tmp/catalogue.zip
 
+
 echo -e "\e[36m>>>>>>>>> Install NodeJS Dependencies <<<<<<<<\e[0m"
 npm install
 
