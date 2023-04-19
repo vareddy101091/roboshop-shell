@@ -42,3 +42,4 @@ echo -e "\e[33m>>>>>>>>> Load Schema <<<<<<<<\e[0m"
 mongo --host mongodb-dev.vardevops.online </app/schema/user.js
 
 
+
