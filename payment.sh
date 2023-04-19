@@ -28,3 +28,4 @@ echo -e "\e[32m>>>>>>>>> Start Payment Service <<<<<<<<\e[0m"
 systemctl daemon-reload
 systemctl enable payment
 systemctl restart payment
+
