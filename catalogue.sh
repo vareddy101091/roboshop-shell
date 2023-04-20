@@ -47,3 +47,4 @@ echo -e "\e[36m>>>>>>>>> Load Schema <<<<<<<<\e[0m"
 mongo --host mongodb-dev.vardevops.online </app/schema/catalogue.js
 
 
+
