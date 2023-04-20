@@ -1,12 +1,14 @@
-script_path=$(dirname $0)
+script=$(realpath "$0")
+script_path=$(dirname "$script")
 source ${script_path}/common.sh
+
 
 
 echo -e "\e[32m>>>>>>>>> Install nginx <<<<<<<<\e[0m"
 yum install nginx -y
 
 echo -e "\e[32m>>>>>>>>> Create Nginx Reverse Proxy Configuration. <<<<<<<<\e[0m"
-cp /home/centos/roboshop-shell/roboshop.conf /etc/nginx/default.d/roboshop.conf
+cp ${script_path}/roboshop.conf /etc/nginx/default.d/roboshop.conf
 
 echo -e "\e[32m>>>>>>>>> Remove Default Content Nginx is serving <<<<<<<<\e[0m"
 rm -rf /usr/share/nginx/html/*

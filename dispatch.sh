@@ -1,11 +1,13 @@
-script_path=$(dirname $0)
+script=$(realpath "$0")
+script_path=$(dirname "$script")
 source ${script_path}/common.sh
+
 
 echo -e "\e[34m>>>>>>>>> Install GoLang <<<<<<<<\e[0m"
 yum install golang -y
 
 echo -e "\e[34m>>>>>>>>> Add Application User <<<<<<<<\e[0m"
-useradd roboshop
+useradd ${app_user}
 
 echo -e "\e[34m>>>>>>>>> Create App Dir <<<<<<<<\e[0m"
 mkdir /app
@@ -25,7 +27,7 @@ go get
 go build
 
 echo -e "\e[34m>>>>>>>>> Setup SystemD Payment Service <<<<<<<<\e[0m"
-cp /home/centos/roboshop-shell/dispatch.service /etc/systemd/system/dispatch.service
+cp ${script_path}/dispatch.service /etc/systemd/system/dispatch.service
 
 echo -e "\e[34m>>>>>>>>> Start Dispatch Service <<<<<<<<\e[0m"
 
