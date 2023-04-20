@@ -23,4 +23,3 @@ systemctl restart mongod
 
 
 
-
