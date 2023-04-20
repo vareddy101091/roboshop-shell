@@ -33,6 +33,7 @@ mysql -h mysql-dev.vardevops.online -uroot -pRoboShop@1 < /app/schema/shipping.s
 echo -e "\e[31m>>>>>>>>> Setup SystemD Service <<<<<<<<\e[0m"
 cp ${script_path}/shipping.service /etc/systemd/system/shipping.service
 
+
 echo -e "\e[31m>>>>>>>>> Start Shipping Service <<<<<<<<\e[0m"
 systemctl daemon-reload
 systemctl enable shipping
