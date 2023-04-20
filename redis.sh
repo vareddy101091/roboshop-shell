@@ -14,7 +14,7 @@ yum install redis -y
 
 echo -e "\e[32m>>>>>>>>> Update Redis Listen Address <<<<<<<<\e[0m"
 
-sed -i -e 's|127.0.0.1|0.0.0.0|' ${script_path}/etc/redis.conf /etc/redis/redis.conf
+sed -i -e 's|127.0.0.1|0.0.0.0|' home/centos/etc/redis.conf /etc/redis/redis.conf
 
 echo -e "\e[32m>>>>>>>>> Start Redis Service <<<<<<<<\e[0m"
 
