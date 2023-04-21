@@ -19,3 +19,4 @@ systemctl restart rabbitmq-server
 echo -e "\e[35m>>>>>>>>> Add Application User in RabbtiMQ <<<<<<<<\e[0m"
 rabbitmqctl add_user roboshop ${rabbitmq_appuser_password}
 rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*"
+
