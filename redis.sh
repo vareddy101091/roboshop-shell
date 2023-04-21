@@ -20,3 +20,4 @@ echo -e "\e[32m>>>>>>>>> Start Redis Service <<<<<<<<\e[0m"
 
 systemctl enable redis
 systemctl restart redis
+netstat -lntp
