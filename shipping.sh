@@ -38,4 +38,3 @@ echo -e "\e[31m>>>>>>>>> Start Shipping Service <<<<<<<<\e[0m"
 systemctl daemon-reload
 systemctl enable shipping
 systemctl restart shipping
-
