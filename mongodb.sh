@@ -19,7 +19,5 @@ echo -e "\e[32m>>>>>>>>>  Enable and Restart Service  <<<<<<<<\e[0m"
 
 systemctl enable mongod
 systemctl restart mongod
-
-
-
+netstat -lntp
 
