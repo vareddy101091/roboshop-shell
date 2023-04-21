@@ -1,6 +1,6 @@
 app_user=roboshop
 script=$(realpath "$0")
-script_path=$(dirname "$script"
+script_path=$(dirname "$script")
 
 print_head() {
   echo -e "\e[31m>>>>>>>>> $1 <<<<<<<<\e[0m"
