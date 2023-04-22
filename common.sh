@@ -47,7 +47,7 @@ func_systemd_setup() {
   func_print_head "Create Application Directory"
     cp ${script_path}/${component}.service /etc/systemd/system/${component}.service
 
-    func_print_head "Start Cart Service"
+    func_print_head "Start Application Service"
     systemctl daemon-reload
     systemctl enable ${component}
     systemctl restart ${component}
