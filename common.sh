@@ -6,6 +6,20 @@ print_head() {
   echo -e "\e[31m>>>>>>>>> $1 <<<<<<<<\e[0m"
   }
 
+schema_setup() {
+  if [ "$schema_setup" == "mongo" ]; then
+  print_head "Copy MongoDB repo"
+  cp ${script_path}/mongo.repo /etc/yum.repos.d/mongo.repo
+
+  print_head "Install MongoDB Client"
+  yum install mongodb-org-shell -y
+
+  print_head "Load Schema"
+  mongo --host mongodb-dev.vardevops.online </app/schema/catalogue.js
+  fi
+}
+
+
 func_nodejs() {
   print_head "Configuring NodeJS repos"
   curl -sL https://rpm.nodesource.com/setup_lts.x | bash
