@@ -10,12 +10,12 @@ func_print_head "Install MongoDB"
 yum install mongodb-org -y &>>$log_file
 func_stat_check $?
 
-func_print_head  "Update Listen Address"
+func_print_head  "Update MongoDB Listen Address"
 sed -i -e 's|127.0.0.1|0.0.0.0|' /etc/mongod.conf &>>$log_file
 func_stat_check $?
 
 
-func_print_head "Enable and Restart Service"
+func_print_head "Start MongoDB"
 systemctl enable mongod &>>$log_file
 systemctl restart mongod &>>$log_file
 netstat -lntp
