@@ -3,34 +3,43 @@ script_path=$(dirname "$script")
 source ${script_path}/common.sh
 
 
-echo -e "\e[34m>>>>>>>>> Install GoLang <<<<<<<<\e[0m"
-yum install golang -y
 
-echo -e "\e[34m>>>>>>>>> Add Application User <<<<<<<<\e[0m"
-useradd ${app_user}
+func_print_head "Install GoLang"
+yum install golang -y &>>$log_file
+func_stat_check $?
 
-echo -e "\e[34m>>>>>>>>> Create App Dir <<<<<<<<\e[0m"
-mkdir /app
+func_print_head "Add Application User"
+useradd ${app_user} &>>$log_file
+func_stat_check $?
 
-echo -e "\e[34m>>>>>>>>> Download App Content <<<<<<<<\e[0m"
-curl -L -o /tmp/dispatch.zip https://roboshop-artifacts.s3.amazonaws.com/dispatch.zip
+func_print_head "Create App Dir"
+mkdir /app &>>$log_file
+func_stat_check $?
+
+func_print_head "Download App Content"
+curl -L -o /tmp/dispatch.zip https://roboshop-artifacts.s3.amazonaws.com/dispatch.zip &>>$log_file
 cd /app
+func_stat_check $?
 
-echo -e "\e[34m>>>>>>>>> Unzip App Content <<<<<<<<\e[0m"
 
-unzip /tmp/dispatch.zip
+func_print_head "Unzip App Content"
+unzip /tmp/dispatch.zip &>>$log_file
+func_stat_check $?
 
-echo -e "\e[34m>>>>>>>>> Download the dependencies & build the software. <<<<<<<<\e[0m"
+func_print_head "Download the dependencies & build the software."
 cd /app
-go mod init dispatch
-go get
-go build
+go mod init dispatch &>>$log_file
+go get &>>$log_file
+go build &>>$log_file
+func_stat_check $?
 
-echo -e "\e[34m>>>>>>>>> Setup SystemD Payment Service <<<<<<<<\e[0m"
-cp ${script_path}/dispatch.service /etc/systemd/system/dispatch.service
+func_print_head "Setup SystemD Payment Service"
+cp ${script_path}/dispatch.service /etc/systemd/system/dispatch.service &>>$log_file
+func_stat_check $?
 
-echo -e "\e[34m>>>>>>>>> Start Dispatch Service <<<<<<<<\e[0m"
+func_print_head "Start Dispatch Service"
 
-systemctl daemon-reload
-systemctl enable dispatch
-systemctl start dispatch
+systemctl daemon-reload &>>$log_file
+systemctl enable dispatch &>>$log_file
+systemctl start dispatch &>>$log_file
+func_stat_check $?
