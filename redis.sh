@@ -9,7 +9,7 @@ func_stat_check $?
 
 func_print_head "Install Redis"
 dnf module enable redis:remi-6.2 -y &>>$log_file
-yum install redis -y
+yum install redis -y &>>$log_file
 func_stat_check $?
 
 func_print_head  "Update Redis Listen Address"
