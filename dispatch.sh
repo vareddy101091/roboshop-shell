@@ -4,4 +4,3 @@ source ${script_path}/common.sh
 
 component="dispatch"
 func_golang
-
