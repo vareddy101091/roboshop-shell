@@ -128,6 +128,23 @@ func_python() {
   sed -i -e "s|rabbitmq_appuser_password|${rabbitmq_appuser_password}|" ${script_path}/payment.service &>>$log_file
   func_stat_check $?
 
- func_systemd_setup
+  func_systemd_setup
 
+}
+
+func_golang(){
+  func_print_head "install golang"
+  yum install golang -y &>>${log_file}
+  func_stat_check $?
+
+  func_app_prereq
+
+  func_print_head "install golang dependencies"
+  go mod init dispatch &>>${log_file}
+  go get &>>${log_file}
+  go build &>>${log_file}
+
+  func_stat_check $?
+
+  func_systemd_setup
 }
