@@ -27,7 +27,7 @@ func_schema_setup() {
   func_stat_check $?
 
   func_print_head "Load Schema"
-  mongo --host mongodb-dev.vardevops.online </app/schema/${component}.js &>>$log_file
+  mongo --host mongodb-var.instance_type.online </app/schema/${component}.js &>>$log_file
   func_stat_check $?
   fi
   if [ "${schema_setup}" == "mysql" ]; then
@@ -36,7 +36,7 @@ func_schema_setup() {
    func_stat_check $?
 
    func_print_head "Load Schema"
-   mysql -h mysql-dev.vardevops.online -uroot -p${mysql_root_password} < /app/schema/shipping.sql &>>$log_file
+   mysql -h mysql-var.instance_type.online -uroot -p${mysql_root_password} < /app/schema/shipping.sql &>>$log_file
    func_stat_check $?
   fi
 }
